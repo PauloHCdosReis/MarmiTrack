@@ -1,25 +1,26 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Providers } from './providers'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+import './globals.css';
+import { Providers } from './providers';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'MarmiTrack',
-  description: 'Peça sua marmita',
-}
+	title: 'MarmiTrack',
+	description: 'Peça sua marmita'
+};
 
 export default function RootLayout({
-  children,
+	children
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-gray-100 dark:bg-slate-900`}>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en" className="light">
+			<body className={`${inter.className} bg-gray-200 dark:bg-slate-900`}>
+				<Providers>{children}</Providers>
+			</body>
+		</html>
+	);
 }
