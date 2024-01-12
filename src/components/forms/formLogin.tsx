@@ -1,49 +1,50 @@
-"use client";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import Link from "next/link";
+'use client'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import Link from 'next/link'
 
 const loginFormSchema = z.object({
   username: z
     .string()
-    .nonempty("O username é obrigatório!")
+    .nonempty('O username é obrigatório!')
     .transform((username) => {
-      return username.trim();
+      return username.trim()
     }),
-  senha: z.string().nonempty("A senha é obrigatória!"),
-});
+  senha: z.string().nonempty('A senha é obrigatória!'),
+})
 
-type LoginFormData = z.infer<typeof loginFormSchema>;
+type LoginFormData = z.infer<typeof loginFormSchema>
 
 export default function FormLogin() {
-  const [toggleSenha, setToggleSenha] = useState(false);
-  const [output, setOutput] = useState("");
+  const [toggleSenha, setToggleSenha] = useState(false)
+  const [output, setOutput] = useState('')
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginFormSchema),
-  });
+  })
 
   function loginUser(data: any) {
-    console.log(data);
+    console.log(data)
   }
 
   return (
     <div>
       <form
         className="flex flex-col gap-4 w-full max-w-xs"
-        onSubmit={handleSubmit(loginUser)}>
+        onSubmit={handleSubmit(loginUser)}
+      >
         <div className="flex flex-col gap-1">
           <label htmlFor="username">Username</label>
           <input
             className="border rounded dark:bg-zinc-700 dark:text-white dark:border-zinc-200 shadow-sm h-8 px-3"
             type="text"
             id="username"
-            {...register("username")}
+            {...register('username')}
             autoComplete="off"
           />
           {errors.username && (
@@ -61,7 +62,8 @@ export default function FormLogin() {
             <div className="text-sm">
               <a
                 className="font-semibold text-light-200 dark:text-dark-100 cursor-pointer"
-                onClick={() => setToggleSenha((toggleSenha) => !toggleSenha)}>
+                onClick={() => setToggleSenha((toggleSenha) => !toggleSenha)}
+              >
                 {toggleSenha ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +75,8 @@ export default function FormLogin() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-eye">
+                    className="lucide lucide-eye"
+                  >
                     <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
@@ -88,7 +91,8 @@ export default function FormLogin() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-eye-off">
+                    className="lucide lucide-eye-off"
+                  >
                     <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
                     <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
                     <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
@@ -100,9 +104,9 @@ export default function FormLogin() {
           </div>
           <input
             className="border rounded dark:bg-zinc-700 dark:text-white dark:border-zinc-200 shadow-sm h-8 px-3"
-            type={toggleSenha ? "text" : "password"}
+            type={toggleSenha ? 'text' : 'password'}
             id="senha"
-            {...register("senha")}
+            {...register('senha')}
           />
           {errors.senha && (
             <span className="text-sm text-red-500">{errors.senha.message}</span>
@@ -121,17 +125,19 @@ export default function FormLogin() {
           <div className="text-sm">
             <Link
               href="/esquecisenha"
-              className="font-semibold text-light-200 dark:text-dark-100">
+              className="font-semibold text-light-200 dark:text-dark-100"
+            >
               Esqueci Senha
             </Link>
           </div>
         </div>
         <button
           className="bg-light-200 dark:bg-dark-100 rounded p-1 text-white"
-          type="submit">
+          type="submit"
+        >
           Login
         </button>
       </form>
     </div>
-  );
+  )
 }

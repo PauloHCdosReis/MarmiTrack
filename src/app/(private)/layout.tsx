@@ -1,8 +1,4 @@
-import {
-  ResizablePanelGroup,
-  ResizablePanel,
-  ResizableHandle,
-} from '@/components/ui/resizable'
+import Sidebar from '@/components/sidebar'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -16,12 +12,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="h-screen">
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel className="w-auto bg-slate-800">One</ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel>{children}</ResizablePanel>
-      </ResizablePanelGroup>
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-4 bg-gray-300 dark:bg-gray-900">
+        {children}
+      </main>
     </div>
   )
 }
