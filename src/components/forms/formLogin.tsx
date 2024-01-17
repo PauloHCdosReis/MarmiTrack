@@ -2,8 +2,10 @@
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const loginFormSchema = z.object({
   username: z
@@ -28,8 +30,22 @@ export default function FormLogin() {
     resolver: zodResolver(loginFormSchema),
   })
 
-  function loginUser(data: any) {
+  async function loginUser(data: any) {
+    /* data.preventDefault() */
+    /* const username = data.username
+    const senha = data.senha
     console.log(data)
+    const result = await signIn('credentials', {
+      username,
+      senha,
+      redirect: false,
+    })
+
+    if (result?.error) {
+      console.log(result)
+      return
+    }
+    console.log('/home') */
   }
 
   return (

@@ -1,19 +1,19 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTheme } from 'next-themes'
+import ThemeMode from './themeMode'
 
 export default function Sidebar() {
   const [expanded, setExpanded] = useState(false)
-  const [darkMode, setDarkMode] = useState(true)
   const { theme, setTheme } = useTheme()
   const router = usePathname()
 
   return (
     <aside
-      className={`bg-gray-50 dark:bg-gray-800 h-screen w-auto transition-all duration-2000 ${
-        expanded ? 'w-64' : 'w-auto'
+      className={`bg-gray-50 dark:bg-gray-800 min-h-screen h-screen w-auto transition-all duration-2000 ${
+        expanded ? 'w-72' : 'w-auto'
       }`}
     >
       <div
@@ -56,7 +56,7 @@ export default function Sidebar() {
         {expanded ? <span className="ml-2">MarmiTrack</span> : ''}
         <span
           className={`absolute ${
-            expanded ? 'top-3 left-52' : 'top-3 left-16'
+            expanded ? 'top-3 left-60' : 'top-3 left-16'
           } scale-0 transition-all rounded w-40 text-center bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
         >
           Abri / Fechar - Menu
@@ -90,10 +90,10 @@ export default function Sidebar() {
                 <path d="M16 8h2" />
                 <path d="M16 12h2" />
               </svg>
-              {expanded ? <span className="ml-2">Cárdapio</span> : ''}
+              {expanded ? <span className="ml-2">Cardápio</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-1 left-52' : 'top-1 left-16'
+                  expanded ? 'top-1 left-60' : 'top-1 left-16'
                 } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 Faça seu pedido
@@ -131,11 +131,11 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Administração</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-0 left-52' : 'top-0 left-16'
+                  expanded ? 'top-0 left-60' : 'top-0 left-16'
                 } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
-                  <Link href={'/admin/mistura'}>
+                  <Link href={'/login'}>
                     <ul
                       className={`hover:bg-gray-100 rounded dark:hover:bg-gray-700 ${
                         router === '/admin/mistura'
@@ -233,7 +233,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Contrle de Acesso</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-0 left-52' : 'top-0 left-16'
+                  expanded ? 'top-0 left-60' : 'top-0 left-16'
                 } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
@@ -289,7 +289,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Usuário</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-0 left-52' : 'top-0 left-16'
+                  expanded ? 'top-0 left-60' : 'top-0 left-16'
                 } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
@@ -319,81 +319,37 @@ export default function Sidebar() {
               </span>
             </div>
           </li>
-          {darkMode ? (
-            <li className="mb-2 group relative">
-              <a
-                onClick={() => {
-                  setTheme('light')
-                  setDarkMode(false)
-                }}
-                className={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-sun ml-2"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2" />
-                  <path d="M12 20v2" />
-                  <path d="m4.93 4.93 1.41 1.41" />
-                  <path d="m17.66 17.66 1.41 1.41" />
-                  <path d="M2 12h2" />
-                  <path d="M20 12h2" />
-                  <path d="m6.34 17.66-1.41 1.41" />
-                  <path d="m19.07 4.93-1.41 1.41" />
-                </svg>
-                {expanded ? <span className="ml-2">Light Mode</span> : ''}
-                <span
-                  className={`absolute ${
-                    expanded ? 'top-1 left-52' : 'top-1 left-16'
-                  } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
-                >
-                  Light Mode
-                </span>
-              </a>
-            </li>
-          ) : (
-            <li className="mb-2 group relative">
-              <a
-                onClick={() => {
-                  setTheme('dark')
-                  setDarkMode(true)
-                }}
-                className={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-moon ml-2"
-                >
-                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-                </svg>
-                {expanded ? <span className="ml-2">Dark Mode</span> : ''}
-                <span
-                  className={`absolute ${
-                    expanded ? 'top-1 left-52' : 'top-1 left-16'
-                  } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
-                >
-                  Dark Mode
-                </span>
-              </a>
-            </li>
-          )}
+          <li className="mb-2 group relative">
+            {theme === 'dark' ? (
+              <ThemeMode
+                type={'a'}
+                themeProps={theme}
+                setThemeProps={setTheme}
+                styleType={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
+                styleSvg={`ml-2`}
+                tooltip={true}
+                expanded={expanded}
+                tooltipText={`Light Mode`}
+                tooltipStyle={`absolute ${
+                  expanded ? 'top-1 left-60' : 'top-1 left-16'
+                } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+              />
+            ) : (
+              <ThemeMode
+                type={'a'}
+                themeProps={theme}
+                setThemeProps={setTheme}
+                styleType={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
+                styleSvg={`ml-2`}
+                tooltip={false}
+                expanded={expanded}
+                tooltipText={`Dark Mode`}
+                tooltipStyle={`absolute ${
+                  expanded ? 'top-1 left-60' : 'top-1 left-16'
+                } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+              />
+            )}
+          </li>
           <li className="mb-2 group relative">
             <Link
               href="/sair"
@@ -420,7 +376,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Sair</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-1 left-52' : 'top-1 left-16'
+                  expanded ? 'top-1 left-60' : 'top-1 left-16'
                 } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 Sair

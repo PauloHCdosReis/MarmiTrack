@@ -12,7 +12,7 @@ import {
 export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <Card className="bg-gray-100 dark:bg-dark-300 shadow-lg max-w-lg mx-auto p-2">
+      <Card className="bg-gray-100 dark:bg-dark-300 shadow-lg w-96 max-w-lg mx-auto p-2">
         <CardHeader className="items-center">
           <CardTitle>Logar</CardTitle>
           <CardDescription>MarmiTrack</CardDescription>

@@ -14,8 +14,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   if (!mounted) {
     return <>{children}</>
   }
+
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
       {children}
     </ThemeProvider>
   )
