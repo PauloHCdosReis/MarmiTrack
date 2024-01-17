@@ -19,6 +19,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
 const database = [
   {
@@ -384,10 +389,15 @@ const database = [
 export default function Home() {
   return (
     <div className="w-full max-w-full mt-12 md:mt-0 lg:mt-0">
+      <span className="flex mb-0 rounded-t bg-slate-800 p-1 justify-center text-center">
+        Restaurantes:
+      </span>
       <Tabs defaultValue={database[0].name} className="">
-        <TabsList loop={true} className="flex space-x-2 h-auto">
+        <TabsList
+          loop={true}
+          className="flex space-x-2 border-0 h-auto rounded-tl-none rounded-tr-none rounded-b"
+        >
           <div className="">
-            <span className="me-2">Restaurantes:</span>
             {database.map((restaurant) => (
               <TabsTrigger
                 key={restaurant.id}
@@ -461,8 +471,18 @@ export default function Home() {
                             <DialogTitle>
                               Faça seu pedido, mistura selecionada: {mix.name}.
                             </DialogTitle>
-                            <DialogDescription className="w-full">
-                              teste
+                            <DialogDescription className="grid grid-cols-1 w-full justify-center text-center">
+                              <Popover>
+                                <span className="mt-2">
+                                  Retirar Acompanhamentos:
+                                </span>
+                                <PopoverTrigger className="m-2 mb-4 rounded p-2 bg-neutral-100 dark:bg-slate-900">
+                                  Acompanhamentos
+                                </PopoverTrigger>
+                                <PopoverContent>
+                                  Place content for the popover here.
+                                </PopoverContent>
+                              </Popover>
                             </DialogDescription>
                             <DialogFooter>
                               <DialogClose asChild>

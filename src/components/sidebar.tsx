@@ -13,7 +13,7 @@ export default function Sidebar() {
   return (
     <aside
       className={`bg-gray-50 dark:bg-gray-800 min-h-screen h-screen w-auto transition-all duration-2000 ${
-        expanded ? 'w-72' : 'w-auto'
+        expanded ? 'w-[17.9rem]' : 'w-auto'
       }`}
     >
       <div
@@ -341,7 +341,7 @@ export default function Sidebar() {
                 setThemeProps={setTheme}
                 styleType={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
                 styleSvg={`ml-2`}
-                tooltip={false}
+                tooltip={true}
                 expanded={expanded}
                 tooltipText={`Dark Mode`}
                 tooltipStyle={`absolute ${

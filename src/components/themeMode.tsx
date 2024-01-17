@@ -129,9 +129,9 @@ export default function ThemeMode({
           )}
           {expanded ? (
             themeProps === 'dark' ? (
-              <span className="ml-2">Dark Mode</span>
-            ) : (
               <span className="ml-2">Light Mode</span>
+            ) : (
+              <span className="ml-2">Dark Mode</span>
             )
           ) : (
             ''
