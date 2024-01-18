@@ -1,68 +1,47 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 import { useTheme } from 'next-themes'
 import ThemeMode from './themeMode'
+import { group } from 'console'
+import { text } from 'stream/consumers'
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState(false)
   const { theme, setTheme } = useTheme()
   const router = usePathname()
 
   return (
     <aside
-      className={`bg-gray-50 dark:bg-gray-800 min-h-screen h-screen w-auto transition-all duration-2000 ${
-        expanded ? 'w-56' : 'w-auto'
-      }`}
+      className={`bg-gray-50 dark:bg-gray-800 min-h-screen h-screen transition-all duration-2000
+        w-auto flex flex-col flex-`}
     >
-      <div
+      <Link
+        href={'/'}
         className="p-4 flex cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 group relative"
-        onClick={() => setExpanded((expanded) => !expanded)}
       >
-        {expanded ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-chevron-left-square"
-          >
-            <rect width="18" height="18" x="3" y="3" rx="2" />
-            <path d="m14 16-4-4 4-4" />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-chevron-right-square"
-          >
-            <rect width="18" height="18" x="3" y="3" rx="2" />
-            <path d="m10 8 4 4-4 4" />
-          </svg>
-        )}
-        {expanded ? <span className="ml-2">MarmiTrack</span> : ''}
-        <span
-          className={`absolute ${
-            expanded ? 'top-3 left-48' : 'top-3 left-16'
-          } scale-0 transition-all rounded w-40 text-center bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-home"
         >
-          Abri / Fechar - Menu
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        <span
+          className={`absolute top-3 left-16 scale-0 transition-all rounded w-40 text-center bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+        >
+          MarmiTrack
         </span>
-      </div>
-      <nav className="mt-4">
+      </Link>
+      <nav className="mt-6 flex-grow">
         <ul className="items-center justify-center">
           <li className="mb-2 group relative">
             <Link
@@ -90,11 +69,8 @@ export default function Sidebar() {
                 <path d="M16 8h2" />
                 <path d="M16 12h2" />
               </svg>
-              {expanded ? <span className="ml-2">Cardápio</span> : ''}
               <span
-                className={`absolute ${
-                  expanded ? 'top-1 left-48' : 'top-1 left-16'
-                } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                className={`absolute top-1 left-16 text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 Faça seu pedido
               </span>
@@ -128,11 +104,9 @@ export default function Sidebar() {
                 <rect width="20" height="14" x="2" y="5" rx="2" />
                 <line x1="2" x2="22" y1="10" y2="10" />
               </svg>
-              {expanded ? <span className="ml-2">Administração</span> : ''}
               <span
-                className={`absolute ${
-                  expanded ? 'top-0 left-48' : 'top-0 left-16'
-                } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                className={`absolute top-0 left-16
+                text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
                   <Link href={'/login'}>
@@ -230,11 +204,9 @@ export default function Sidebar() {
                 <rect width="8" height="5" x="12" y="6" rx="1" />
                 <path d="M18 6V4a2 2 0 1 0-4 0v2" />
               </svg>
-              {expanded ? <span className="ml-2">Contrle de Acesso</span> : ''}
               <span
-                className={`absolute ${
-                  expanded ? 'top-0 left-48' : 'top-0 left-16'
-                } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                className={`absolute top-0 left-16
+                text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
                   <Link href={'/admin/grupos'}>
@@ -245,7 +217,7 @@ export default function Sidebar() {
                           : ''
                       }`}
                     >
-                      <li className="p-2 text-[16px]">Grupos</li>
+                      <li className="p-2 text-[16px] min-w-32">Grupos</li>
                     </ul>
                   </Link>
                   <Link href={'/admin/usuarios'}>
@@ -286,11 +258,9 @@ export default function Sidebar() {
                 <circle cx="12" cy="8" r="5" />
                 <path d="M20 21a8 8 0 0 0-16 0" />
               </svg>
-              {expanded ? <span className="ml-2">Usuário</span> : ''}
               <span
-                className={`absolute ${
-                  expanded ? 'top-0 left-48' : 'top-0 left-16'
-                } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                className={`absolute top-0 left-16
+                text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
                   <Link href={'/admin/perfi'}>
@@ -312,13 +282,19 @@ export default function Sidebar() {
                           : ''
                       }`}
                     >
-                      <li className="p-2 text-[16px] ">Meus Pedidos</li>
+                      <li className="p-2 text-[16px] whitespace-nowrap">
+                        Meus Pedidos
+                      </li>
                     </ul>
                   </Link>
                 </div>
               </span>
             </div>
           </li>
+        </ul>
+      </nav>
+      <nav className="mb-4">
+        <ul>
           <li className="mb-2 group relative">
             {theme === 'dark' ? (
               <ThemeMode
@@ -328,11 +304,9 @@ export default function Sidebar() {
                 styleType={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
                 styleSvg={`ml-2`}
                 tooltip={true}
-                expanded={expanded}
+                expanded={false}
                 tooltipText={`Light Mode`}
-                tooltipStyle={`absolute ${
-                  expanded ? 'top-1 left-48' : 'top-1 left-16'
-                } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                tooltipStyle={`absolute top-1 left-16 text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               />
             ) : (
               <ThemeMode
@@ -342,11 +316,10 @@ export default function Sidebar() {
                 styleType={`p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer`}
                 styleSvg={`ml-2`}
                 tooltip={true}
-                expanded={expanded}
+                expanded={false}
                 tooltipText={`Dark Mode`}
-                tooltipStyle={`absolute ${
-                  expanded ? 'top-1 left-48' : 'top-1 left-16'
-                } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                tooltipStyle={`absolute top-1 left-16
+                text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               />
             )}
           </li>
@@ -373,11 +346,9 @@ export default function Sidebar() {
                 <polyline points="16 17 21 12 16 7" />
                 <line x1="21" x2="9" y1="12" y2="12" />
               </svg>
-              {expanded ? <span className="ml-2">Sair</span> : ''}
               <span
-                className={`absolute ${
-                  expanded ? 'top-1 left-48' : 'top-1 left-16'
-                } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
+                className={`absolute top-1 left-16
+                text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 Sair
               </span>
