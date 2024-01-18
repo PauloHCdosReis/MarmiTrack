@@ -24,6 +24,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 
 const database = [
   {
@@ -386,10 +396,41 @@ const database = [
   },
 ]
 
+const Acompanahmentos = [
+  {
+    acompanhamento: 'Feijoada',
+    retirar: false,
+  },
+  {
+    acompanhamento: 'Strogonoff',
+    retirar: false,
+  },
+  {
+    acompanhamento: 'Panqueca de carne',
+    retirar: false,
+  },
+  {
+    acompanhamento: 'Panqueca de frango',
+    retirar: false,
+  },
+  {
+    acompanhamento: 'Bife a milanesa',
+    retirar: false,
+  },
+  {
+    acompanhamento: 'Bife a parmegiana',
+    retirar: false,
+  },
+  {
+    acompanhamento: 'Bife de frango a milanesa',
+    retirar: false,
+  },
+]
+
 export default function Home() {
   return (
     <div className="w-full max-w-full mt-12 md:mt-0 lg:mt-0">
-      <span className="flex mb-0 rounded-t bg-slate-800 p-1 justify-center text-center">
+      <span className="flex mb-0 rounded-t bg-slate-100 dark:bg-slate-800 p-1 justify-center text-center">
         Restaurantes:
       </span>
       <Tabs defaultValue={database[0].name} className="">
@@ -466,24 +507,12 @@ export default function Home() {
                             Fazer pedido
                           </Button>
                         </DialogTrigger>
-                        <DialogContent>
+                        <DialogContent className="top-36">
                           <DialogHeader>
                             <DialogTitle>
                               Faça seu pedido, mistura selecionada: {mix.name}.
                             </DialogTitle>
-                            <DialogDescription className="grid grid-cols-1 w-full justify-center text-center">
-                              <Popover>
-                                <span className="mt-2">
-                                  Retirar Acompanhamentos:
-                                </span>
-                                <PopoverTrigger className="m-2 mb-4 rounded p-2 bg-neutral-100 dark:bg-slate-900">
-                                  Acompanhamentos
-                                </PopoverTrigger>
-                                <PopoverContent>
-                                  Place content for the popover here.
-                                </PopoverContent>
-                              </Popover>
-                            </DialogDescription>
+                            <DialogDescription className="grid grid-cols-1 w-full justify-center text-center"></DialogDescription>
                             <DialogFooter>
                               <DialogClose asChild>
                                 <Button type="button">Cancelar</Button>

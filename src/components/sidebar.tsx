@@ -13,7 +13,7 @@ export default function Sidebar() {
   return (
     <aside
       className={`bg-gray-50 dark:bg-gray-800 min-h-screen h-screen w-auto transition-all duration-2000 ${
-        expanded ? 'w-[17.9rem]' : 'w-auto'
+        expanded ? 'w-56' : 'w-auto'
       }`}
     >
       <div
@@ -56,7 +56,7 @@ export default function Sidebar() {
         {expanded ? <span className="ml-2">MarmiTrack</span> : ''}
         <span
           className={`absolute ${
-            expanded ? 'top-3 left-60' : 'top-3 left-16'
+            expanded ? 'top-3 left-48' : 'top-3 left-16'
           } scale-0 transition-all rounded w-40 text-center bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
         >
           Abri / Fechar - Menu
@@ -93,7 +93,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Cardápio</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-1 left-60' : 'top-1 left-16'
+                  expanded ? 'top-1 left-48' : 'top-1 left-16'
                 } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 Faça seu pedido
@@ -131,7 +131,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Administração</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-0 left-60' : 'top-0 left-16'
+                  expanded ? 'top-0 left-48' : 'top-0 left-16'
                 } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
@@ -233,7 +233,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Contrle de Acesso</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-0 left-60' : 'top-0 left-16'
+                  expanded ? 'top-0 left-48' : 'top-0 left-16'
                 } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
@@ -289,7 +289,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Usuário</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-0 left-60' : 'top-0 left-16'
+                  expanded ? 'top-0 left-48' : 'top-0 left-16'
                 } text-center scale-0 transition-all rounded bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 <div className="m-auto">
@@ -331,7 +331,7 @@ export default function Sidebar() {
                 expanded={expanded}
                 tooltipText={`Light Mode`}
                 tooltipStyle={`absolute ${
-                  expanded ? 'top-1 left-60' : 'top-1 left-16'
+                  expanded ? 'top-1 left-48' : 'top-1 left-16'
                 } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               />
             ) : (
@@ -345,7 +345,7 @@ export default function Sidebar() {
                 expanded={expanded}
                 tooltipText={`Dark Mode`}
                 tooltipStyle={`absolute ${
-                  expanded ? 'top-1 left-60' : 'top-1 left-16'
+                  expanded ? 'top-1 left-48' : 'top-1 left-16'
                 } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               />
             )}
@@ -376,7 +376,7 @@ export default function Sidebar() {
               {expanded ? <span className="ml-2">Sair</span> : ''}
               <span
                 className={`absolute ${
-                  expanded ? 'top-1 left-60' : 'top-1 left-16'
+                  expanded ? 'top-1 left-48' : 'top-1 left-16'
                 } text-center scale-0 transition-all rounded w-28 bg-slate-200 dark:bg-gray-600 p-2 text-xs group-hover:scale-100`}
               >
                 Sair
