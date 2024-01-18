@@ -4,8 +4,6 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import { useTheme } from 'next-themes'
 import ThemeMode from './themeMode'
-import { group } from 'console'
-import { text } from 'stream/consumers'
 
 export default function Sidebar() {
   const { theme, setTheme } = useTheme()
